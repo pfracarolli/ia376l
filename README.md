@@ -10,7 +10,7 @@ oferecida no primeiro semestre de 2022, na Unicamp, sob supervisão da Profa. Dr
 |Nome  | RA | Especialização|
 |--|--|--|
 | Nome1  | 123456  | Eng. de Computação|
-| Nome2  | 123456  | Eng. Eletricisita|
+| Mariana Zaninelo Reis| 223752  | Eng. Eletricisita|
 | Pedro A. Vicentini Fracarolli  | 191535  | Analista de Sistemas|
 
 
