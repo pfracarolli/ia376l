@@ -30,7 +30,7 @@ Para isso inicialmente pretendemos selecionar um modelo de GAN (*generative adve
 
 ### Base de dados
 
-Para este trabalho, pretende-se utilizar uma base de dados própria, que corresponde à imagens de peças que formam uma mini morsa de bancada, conforme ilustrado abaixo:
+Para este trabalho, pretende-se utilizar uma base de dados própria, que corresponde às imagens de peças que formam uma mini morsa de bancada, conforme ilustrado abaixo:
 
 ![Objeto de estudo](IMG_20220424_100951614.jpg)
 
