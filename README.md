@@ -64,7 +64,10 @@ A princípio pretendemos realizar testes com GANs (provavelmente a fastGAN) e VA
 
 Para os testes com GANs, o artigo [TOWARDS FASTER AND STABILIZED GAN TRAINING FOR HIGH-FIDELITY FEW-SHOT IMAGE SYNTHESIS](https://arxiv.org/abs/2101.04775) parece ser bastante útil para o problema em questão, uma vez que aborda a síntese de imagens a partir de um dataset reduzido.
 
-(COMPLETAR) - artigos sobre VAE
+Além disso, pretendemos explorar os seguintes artigos sobre VAEs:
+
+- [An Introduction To Variational Autoencoders](https://arxiv.org/pdf/1906.02691.pdf)
+- [Auto-encoding Variational Bayes](https://arxiv.org/pdf/1312.6114v10.pdf) (artigo clássico)
 
 ### Ferramentas
 
@@ -81,12 +84,12 @@ Para os testes com GANs, o artigo [TOWARDS FASTER AND STABILIZED GAN TRAINING FO
 Para a avaliação dos resultados, pretendemos utilizar um classificador treinado na base de dados original, uma vez que o dataset já está organizado por classes, e realizar os testes com a base de dados gerada a partir do(s) modelo(s) generativo(s). A predição da classe correta nos indicaria que as imagens geradas foram suficientemente boas para o propósito.
 
 ## Cronograma
-|Tarefa                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|
-|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
-|Revisão Bibliográfica          |   X |X    |X    |     |     |     |     |     |
-|Implementação GAN/VAE          |     |     |X    |X    |X    |X    |     |     |
-|Implementação (Outras técnicas)|     |     |     |     |X    |X    |     |     |
-|Relatório Final & Apresentação |     |     |     |     |     |     |X    |X    |
+|Tarefa                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|23/06|30/06
+|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----
+|Revisão Bibliográfica          |   X |X    |X    |     |     |     |     |     |     |
+|Implementação GAN/VAE          |     |     |X    |X    |X    |X    |X    |     |     | 
+|Implementação (Outras técnicas)|     |     |     |     |X    |X    |X    |X    |     |
+|Relatório Final & Apresentação |     |     |     |     |     |     |     |     |X    |X
 
 ## Referências Bibliográficas
 * [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
@@ -98,3 +101,5 @@ Para a avaliação dos resultados, pretendemos utilizar um classificador treinad
 * [Differentiable Augmentation for Data-Efficient GAN Training](https://arxiv.org/abs/2006.10738)
 * [TOWARDS FASTER AND STABILIZED GAN TRAINING FOR HIGH-FIDELITY FEW-SHOT IMAGE SYNTHESIS](https://arxiv.org/abs/2101.04775)
 * [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500)
+* [An Introduction To Variational Autoencoders](https://arxiv.org/pdf/1906.02691.pdf)
+* [Auto-encoding Variational Bayes](https://arxiv.org/pdf/1312.6114v10.pdf)
