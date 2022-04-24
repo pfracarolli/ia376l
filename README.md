@@ -35,7 +35,12 @@ Para isso inicialmente pretendemos selecionar um modelo de GAN (*generative adve
 > * Proposta de avaliação
 
 ## Cronograma
-> Proposta de cronograma. Procure estimar quantas semanas serão gastas para cada etapa do projeto.
+|Tarefa                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|
+|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|
+|Revisão Bibliográfica          |   X |X    |X    |     |     |     |     |     |
+|Implementação GAN/VAE          |     |     |X    |X    |X    |X    |     |     |
+|Implementação (Outras técnicas)|     |     |     |     |X    |X    |     |     |
+|Relatório Final & Apresentação |     |     |     |     |     |     |X    |X    |
 
 ## Referências Bibliográficas
 * [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
