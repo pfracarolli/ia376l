@@ -1,4 +1,4 @@
-# `Data Augmentation em um Dataset de Imagens Modelos Generativos Profundos`
+# `Data Augmentation em um Dataset de Imagens usando Modelos Generativos Profundos`
 # `Data Augmentation of an Image Dataset using Deep Generative Models`
 
 ## Apresentação
