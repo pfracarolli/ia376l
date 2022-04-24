@@ -28,6 +28,9 @@ Para isso inicialmente pretendemos selecionar um modelo de GAN (*generative adve
 ## Metodologia Proposta
 > Para a primeira entrega, a metodologia proposta deve esclarecer:
 > * Qual(is) base(s) de dado(s) o projeto pretende utilizar, justificando a(s) escolha(s) realizadas.
+> Pretendemos utilizar uma base de dados própria, que corresponde à peças que formam uma mini morsa de bancada, conforme ilustrado abaixo:
+> O dataset é originalmente composto por 3000 imagens, divididas em 10 classes balanceadas. A figura a seguir ilustra as classes que compõem o dataset:
+> 
 > (Link para o dataset)[https://drive.google.com/drive/folders/1efljm3fsSU5jd3i0lw46e7y_rgYrkCuo?usp=sharing]
 > * Quais abordagens de modelagem generativa o grupo já enxerga como interessantes de serem estudadas.
 > * Artigos de referência já identificados e que serão estudados ou usados como parte do planejamento do projeto
