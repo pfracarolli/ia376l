@@ -39,8 +39,6 @@ O dataset é originalmente composto por 3000 imagens, divididas em 10 classes ba
 
 ![Imagens](AllImages.png)
 
-Foram aplicadas técnicas de data augmentation no dataset original, gerando 15000 amostras, a princípio as técnicas aplicadas foram: translação e rotação. 
-
 O dataset pode ser acessado através do seguinte hyperlink: 
 
 [Dataset](https://drive.google.com/drive/folders/1efljm3fsSU5jd3i0lw46e7y_rgYrkCuo?usp=sharing)
