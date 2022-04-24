@@ -71,7 +71,7 @@ Além disso, pretendemos explorar os seguintes artigos sobre VAEs:
 
 ### Ferramentas
 
-(COMPLETAR)
+Para este trabalho, pretendemos usar o [PyTorch](https://pytorch.org/) como framework principal, bem como bibliotecas relacionadas a serem definidas ao longo do andamento do projeto. O código será desenvolvido no [Google Colab](https://colab.research.google.com/).
 
 
 ### Resultados esperados
