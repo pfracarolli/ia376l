@@ -26,23 +26,59 @@ Para isso inicialmente pretendemos selecionar um modelo de GAN (*generative adve
 > Incluir nessa seção link para vídeo de apresentação da proposta do projeto (máximo 5 minutos).
 
 ## Metodologia Proposta
-> Para a primeira entrega, a metodologia proposta deve esclarecer:
-> * Qual(is) base(s) de dado(s) o projeto pretende utilizar, justificando a(s) escolha(s) realizadas.
-> Pretendemos utilizar uma base de dados própria, que corresponde à peças que formam uma mini morsa de bancada, conforme ilustrado abaixo:
+
+
+### Base de dados
+
+Para este trabalho, pretende-se utilizar uma base de dados própria, que corresponde à imagens de peças que formam uma mini morsa de bancada, conforme ilustrado abaixo:
 
 ![Objeto de estudo](IMG_20220424_100951614.jpg)
 
 
-> O dataset é originalmente composto por 3000 imagens, divididas em 10 classes balanceadas. A figura a seguir ilustra as classes que compõem o dataset:
+O dataset é originalmente composto por 3000 imagens, divididas em 10 classes balanceadas. A figura a seguir ilustra as classes que compõem o dataset:
+
+![Imagens](AllImages.png)
+
+Foram aplicadas técnicas de data augmentation no dataset original, gerando 15000 amostras, a princípio as técnicas aplicadas foram: translação e rotação. 
+
+O dataset pode ser acessado através do seguinte hyperlink: 
+
+[Dataset](https://drive.google.com/drive/folders/1efljm3fsSU5jd3i0lw46e7y_rgYrkCuo?usp=sharing)
+
+A motivação para a escolha desse dataset se deu por alguns fatores, sendo eles:
+
+* Não é um dataset já conhecido, nos possibilitará avaliar os resultados de modelos generativos em uma aplicação mais "real"
+
+* É constituído por imagens de objetos 3D, poderemos avaliar o comportamentos dos modelos nesse caso, uma vez que pode ser que apresente um nível maior de complexidade na geração de imagens realistas
+
+* Originalmente é um dataset pequeno, nos possibilita estudar o desempenho de modelos generativos nesse tipo de cenário
+
+* Por ser um dataset que está organizado por classes, a avaliação dos resultados pode ser mais simples, em comparação com análises subjetivas, por exemplo
 
 
-> 
-> (Link para o dataset)[https://drive.google.com/drive/folders/1efljm3fsSU5jd3i0lw46e7y_rgYrkCuo?usp=sharing]
-> * Quais abordagens de modelagem generativa o grupo já enxerga como interessantes de serem estudadas.
-> * Artigos de referência já identificados e que serão estudados ou usados como parte do planejamento do projeto
-> * Ferramentas a serem utilizadas (com base na visão atual do grupo sobre o projeto).
-> * Resultados esperados
-> * Proposta de avaliação
+### Abordagens
+
+A princípio pretendemos realizar testes com GANs (provavelmente a fastGAN) e VAEs.
+
+### Artigos de referência
+
+Para os testes com GANs, o artigo [TOWARDS FASTER AND STABILIZED GAN TRAINING FOR HIGH-FIDELITY FEW-SHOT IMAGE SYNTHESIS](https://arxiv.org/abs/2101.04775) parece ser bastante útil para o problema em questão, uma vez que aborda a síntese de imagens a partir de um dataset reduzido.
+
+(COMPLETAR) - artigos sobre VAE
+
+### Ferramentas
+
+(COMPLETAR)
+
+
+### Resultados esperados
+
+É esperado que sejam geradas imagens condizentes com a base de dados original, levando em consideração as classes, ou seja, que ainda seja possível classificar as imagens geradas sinteticamente de maneira correta. Além do uso de modelos generativos, pretendemos avaliar a utilização de algumas técnicas de processamento de imagens com o intuito de melhorar os resultados, como a aplicação de filtros nas imagens de saída.
+
+
+### Proposta de avaliação
+
+Para a avaliação dos resultados, pretendemos utilizar um classificador treinado na base de dados original, uma vez que o dataset já está organizado por classes, e realizar os testes com a base de dados gerada a partir do(s) modelo(s) generativo(s). A predição da classe correta nos indicaria que as imagens geradas foram suficientemente boas para o propósito.
 
 ## Cronograma
 |Tarefa                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|
