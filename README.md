@@ -9,16 +9,20 @@ oferecida no primeiro semestre de 2022, na Unicamp, sob supervisão da Profa. Dr
 
 |Nome  | RA | Especialização|
 |--|--|--|
-| Nome1  | 123456  | Eng. de Computação|
+| Matheus Henrique Soares Pinheiro  | 223988  | Eng. Eletricista|
 | Mariana Zaninelo Reis| 223752  | Eng. Eletricista|
 | Pedro A. Vicentini Fracarolli  | 191535  | Analista de Sistemas|
 
 
 ## Descrição Resumida do Projeto
-> Descrição do tema do projeto, incluindo contexto gerador, motivação.
-> Descrição do objetivo principal do projeto.
-> Esclarecer qual será a saída do modelo de síntese, ou generativo.
-> 
+A síntese de sinais por meio de técnicas de deep learning é uma área de estudo que pode ser fragmentada em várias outras como síntese de áudio, texto e imagem cada uma possuindo suas técnicas e desafios particulares.  
+
+Neste projeto nosso grupo irá se aprofundar em síntese de imagens utilizando dados próprio, a integrante Mariana Zaninelo possui um conjunto de dados que será utilizado no decorrer da disciplina e do seu mestrado, conjunto esse constituído de 3000 imagens de impressões 3D de peças de uma mini morsa.  
+
+Pretendemos treinar um modelo que ajude a expandir este conjunto de dados por meio de dados sintéticos (*data augmentation*) e com o novo conjunto de dados obtido treinar modelos que generalizem melhor em tarefas como classificação, detecção de objetos e outras.  
+
+Para isso inicialmente pretendemos selecionar um modelo de GAN (*generative adversarial network*) que desempenhem bem em um conjunto de dados limitado (*few-shot learning*) e nos forneça amostras estatisticamente condizentes com o nosso conjunto de dados original.
+
 > Incluir nessa seção link para vídeo de apresentação da proposta do projeto (máximo 5 minutos).
 
 ## Metodologia Proposta
@@ -34,4 +38,12 @@ oferecida no primeiro semestre de 2022, na Unicamp, sob supervisão da Profa. Dr
 > Proposta de cronograma. Procure estimar quantas semanas serão gastas para cada etapa do projeto.
 
 ## Referências Bibliográficas
-> Apontar nesta seção as referências bibliográficas adotadas no projeto.
+* [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
+* [UNSUPERVISED REPRESENTATION LEARNING WITH DEEP CONVOLUTIONAL GENERATIVE ADVERSARIAL NETWORKS](https://arxiv.org/abs/1511.06434)
+* [Improved Techniques for Training GANs](https://arxiv.org/abs/1606.03498)
+* [Spectral Normalization for Generative Adversarial Networks](https://arxiv.org/abs/1802.05957)
+* [The Unusual Effectiveness of Averaging in GAN Training](https://arxiv.org/abs/1806.04498)
+* [The Unreasonable Effectiveness of Deep Features as a Perceptual Metric](https://arxiv.org/abs/1801.03924)
+* [Differentiable Augmentation for Data-Efficient GAN Training](https://arxiv.org/abs/2006.10738)
+* [TOWARDS FASTER AND STABILIZED GAN TRAINING FOR HIGH-FIDELITY FEW-SHOT IMAGE SYNTHESIS](https://arxiv.org/abs/2101.04775)
+* [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500)
