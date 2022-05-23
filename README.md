@@ -56,16 +56,11 @@ A motivação para a escolha desse conjunto de dados se deu por alguns fatores, 
 
 ### Abordagens
 
-A princípio pretendemos realizar testes com GANs e VAEs.
+A princípio pretendemos realizar testes com GANs.
 
 ### Artigos de referência
 
 Para os testes com GANs, o artigo [Towards Faster and Stabilized GAN Training for High-fidelity Few-shot Image Synthesis](https://arxiv.org/abs/2101.04775) parece ser bastante útil para o problema em questão, uma vez que aborda a síntese de imagens a partir de um conjunto de dados reduzido.
-
-Além disso, pretendemos explorar os seguintes artigos sobre VAEs:
-
-- [An Introduction To Variational Autoencoders](https://arxiv.org/pdf/1906.02691.pdf)
-- [Auto-encoding Variational Bayes](https://arxiv.org/pdf/1312.6114v10.pdf) (artigo clássico)
 
 ### Ferramentas
 
@@ -81,13 +76,82 @@ Para este trabalho, pretendemos usar o [PyTorch](https://pytorch.org/) como fram
 
 Para a avaliação dos resultados, pretendemos utilizar um classificador treinado na base de dados original, uma vez que o conjunto de dados já está organizado por classes, e realizar testes com a base de dados gerada a partir do(s) modelo(s) generativo(s). A predição das classes corretas das amostras sintéticas nos indicaria que elas foram suficientemente boas para o propósito.
 
+<style>
+    table > tbody > tr:nth-child(1) > td:nth-child(n+5):nth-child(-n+6) {
+        background-color: #ac2f3a;
+    }
+    table > tbody > tr:nth-child(1) > td:nth-child(n+2):nth-child(-n+4) {
+        background-color: #2fac3a;
+    }
+
+
+    table > tbody > tr:nth-child(2) > td:nth-child(n+4):nth-child(-n+7) {
+        background-color: #2fac3a;
+    }
+    table > tbody > tr:nth-child(2) > td:nth-child(n+7):nth-child(-n+8) {
+        background-color: #acac3a;
+    }
+
+
+    table > tbody > tr:nth-child(3) > td:nth-child(n+6):nth-child(-n+6) {
+        background-color: #2fac3a;
+    }
+    table > tbody > tr:nth-child(3) > td:nth-child(n+7):nth-child(-n+9) {
+        background-color: #acac3a;
+    }
+
+    table > tbody > tr:nth-child(4) > td:nth-child(n+6):nth-child(-n+6) {
+        background-color: #2fac3a;
+    }
+    table > tbody > tr:nth-child(4) > td:nth-child(n+7):nth-child(-n+9) {
+        background-color: #acac3a;
+    }
+
+    table > tbody > tr:nth-child(5) > td:nth-child(n+9):nth-child(-n+11) {
+        background-color: #acac3a;
+    }
+
+    .planned, .unplanned, .done {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px
+    }
+
+    .planned {
+        background-color: #acac3a;
+    }
+
+    .done {
+        margin-left: 10px;
+        background-color: #2fac3a;
+    }
+    
+    .unplanned {
+        margin-left: 10px;
+        background-color: #ac2f3a;
+    }
+
+    .legend {
+        display: flex;
+        padding: 10px;
+        align-items: center;
+    }
+</style>
+
 ## Cronograma
-|Tarefa                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|23/06|30/06
+|                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|23/06|30/06
 |-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----
-|Revisão Bibliográfica          |   X |X    |X    |     |     |     |     |     |     |
-|Implementação GAN/VAE          |     |     |X    |X    |X    |X    |X    |     |     | 
-|Implementação (Outras técnicas)|     |     |     |     |X    |X    |X    |X    |     |
-|Relatório Final & Apresentação |     |     |     |     |     |     |     |     |X    |X
+|Revisão Bibliográfica          |     |     |     |     |     |     |     |     |     |
+|Implementação GAN              |     |     |     |     |     |     |     |     |     | 
+|Implementação Classificador    |     |     |     |     |     |     |     |     |     |
+|Implementação Heatmap          |     |     |     |     |     |     |     |     |     |
+|Relatório Final & Apresentação |     |     |     |     |     |     |     |     |     |
+
+<div class="legend">
+    <div class="planned"></div> Tempo Planejado
+    <div class="done"></div> Tempo Consumido
+    <div class="unplanned"></div> Tempo Consumido Além do Esperado
+</div>    
 
 ## Referências Bibliográficas
 * [Generative Adversarial Nets](https://arxiv.org/abs/1406.2661)
