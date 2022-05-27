@@ -12,27 +12,27 @@ def NearestUpSampling(c_in, c_out):
         nn.Upsample(scale_factor=2, mode='nearest'),
         spectral_norm(nn.Conv2d(c_in, c_out*2, 3, 1, 1, bias=False)),
         nn.BatchNorm2d(c_out*2),
-        GLU(),
-       )
+        GLU())
+
     return upsampling
 
 class Reduction(nn.Module):
     def __init__(self, c_in, c_out):
         super(Reduction, self).__init__()
+
         self.avg_pool = nn.Sequential(
             nn.AvgPool2d(2, stride=2),
             spectral_norm(nn.Conv2d(c_in, c_out, 1, 1, 0, bias=False)),
             nn.BatchNorm2d(c_out),
-            nn.LeakyReLU(0.2, inplace=True),
-        )
+            nn.LeakyReLU(0.2, inplace=True))
 
-        self.down_conv = nn.Sequential(spectral_norm(nn.Conv2d(c_in, c_out, 4, 2, 1, bias=False)),
-                                        nn.BatchNorm2d(c_out),
-                                        nn.LeakyReLU(0.2, inplace=True),
-                                        spectral_norm(nn.Conv2d(c_out, c_out, 3, 1, 1, bias=False)),
-                                        nn.BatchNorm2d(c_out),
-                                        nn.LeakyReLU(0.2, inplace=True),
-                                        )
+        self.down_conv = nn.Sequential(
+            spectral_norm(nn.Conv2d(c_in, c_out, 4, 2, 1, bias=False)),
+            nn.BatchNorm2d(c_out),
+            nn.LeakyReLU(0.2, inplace=True),
+            spectral_norm(nn.Conv2d(c_out, c_out, 3, 1, 1, bias=False)),
+            nn.BatchNorm2d(c_out),
+            nn.LeakyReLU(0.2, inplace=True))
 
     def forward(self, x):
         return (self.avg_pool(x) + self.down_conv(x)) / 2
@@ -44,8 +44,7 @@ class Simple_Decoder(nn.Module):
             nn.Upsample(scale_factor=2, mode='nearest'),
             spectral_norm(nn.Conv2d(c_in, c_out, 3, 1, 1, bias=False)),
             nn.BatchNorm2d(c_out),
-            nn.LeakyReLU(0.2, inplace=True),
-        )
+            nn.LeakyReLU(0.2, inplace=True))
 
     def forward(self, x):
         return self.main(x)
@@ -59,8 +58,7 @@ class Simple_Decoder_8(nn.Module):
             Simple_Decoder(64, 32), # 32 x 64 x 64
             Simple_Decoder(32, 16), # 16 x 128 x 128
             spectral_norm(nn.Conv2d(16, 3, 3, 1, 1, bias=False)),
-            nn.Tanh()
-        )
+            nn.Tanh())
 
     def forward(self, x):
         return self.main(x)
@@ -73,8 +71,7 @@ class Simple_Decoder_16(nn.Module):
             Simple_Decoder(64, 32), # 32 x 64 x 64
             Simple_Decoder(32, 16), # 16 x 128 x 128
             spectral_norm(nn.Conv2d(16, 3, 3, 1, 1, bias=False)), # 3 x 128 x 128
-            nn.Tanh()
-        )
+            nn.Tanh())
         
     def forward(self, x):
         return self.main(x)
@@ -99,7 +96,6 @@ class Conv_SelfAttn(nn.Module):
         out = x + self.gamma * rearrange(out, 'b (h w) c -> b c h w', **parse_shape(x, 'b c h w'))
         return out
 
-
 class GLU(nn.Module):
     def forward(self, x):
         nc = x.size(1)
@@ -110,10 +106,10 @@ class GLU(nn.Module):
 class SEBlock(nn.Module):
     def __init__(self, ch_in, ch_out):
         super().__init__()
-
-        self.main = nn.Sequential(  nn.AdaptiveAvgPool2d(4), 
-                                    spectral_norm(nn.Conv2d(ch_in, ch_out, 4, 1, 0, bias=False)), nn.LeakyReLU(0.1, inplace=True),
-                                    spectral_norm(nn.Conv2d(ch_out, ch_out, 1, 1, 0, bias=False)), nn.Sigmoid() )
+        self.main = nn.Sequential(
+            nn.AdaptiveAvgPool2d(4), 
+            spectral_norm(nn.Conv2d(ch_in, ch_out, 4, 1, 0, bias=False)), nn.LeakyReLU(0.1, inplace=True),
+            spectral_norm(nn.Conv2d(ch_out, ch_out, 1, 1, 0, bias=False)), nn.Sigmoid())
 
     def forward(self, feat_small, feat_big):
         return feat_big * self.main(feat_small)
@@ -130,9 +126,8 @@ class Generator(nn.Module):
         
         self.initial = nn.Sequential(
             spectral_norm(nn.ConvTranspose2d(nz, nfc[4]*2, 4, 1, 0, bias=False)), 
-                                    nn.BatchNorm2d(nfc[4]*2),
-                                    GLU(), # Output 1024 x 4 x 4
-        )
+            nn.BatchNorm2d(nfc[4]*2),
+            GLU()) # Output 1024 x 4 x 4
 
         self.up1 = NearestUpSampling(c_in=nfc[4], c_out=nfc[8]) # ----> 512 x 8 x 8
         self.up2 = NearestUpSampling(c_in=nfc[8], c_out=nfc[16]) # ----> 256 x 16 x 16
@@ -142,11 +137,12 @@ class Generator(nn.Module):
         self.up6 = NearestUpSampling(c_in=nfc[128], c_out=nfc[256]) # ----> 32 x 256 x 256
         self.up7 = NearestUpSampling(c_in=nfc[256], c_out=nfc[512]) # ----> 16 x 512 x 512
 
-        self.final = nn.Sequential(spectral_norm(nn.ConvTranspose2d(nfc[512], nfc[1024]*2, 3, 1, 1, bias=False)),
-                                    nn.BatchNorm2d(nfc[1024]*2),
-                                    GLU(),
-                                    spectral_norm(nn.Conv2d(nfc[1024], nc, 3, 1, 1, bias=False)),
-                                    nn.Tanh()) # Output 3 x 1024 x 1024
+        self.final = nn.Sequential(
+            spectral_norm(nn.ConvTranspose2d(nfc[512], nfc[1024]*2, 3, 1, 1, bias=False)),
+            nn.BatchNorm2d(nfc[1024]*2),
+            GLU(),
+            spectral_norm(nn.Conv2d(nfc[1024], nc, 3, 1, 1, bias=False)),
+            nn.Tanh()) # Output 3 x 1024 x 1024
         
         self.skip_layer_4_64 = SEBlock(nfc[4], nfc[64])
         self.skip_layer_8_128 = SEBlock(nfc[8], nfc[128])
@@ -177,37 +173,33 @@ class Generator(nn.Module):
         out_up7 = self.up7(out_up6) # Output 16 x 512 x 512
         out_up7 = self.skip_layer_32_512(out_up3, out_up7)
         
-        out = self.final(out_up7) # Output 3 x 1024 x 1024
+        return self.final(out_up7) # Output 3 x 1024 x 1024
         
-        return out
-
 class Discriminator(nn.Module):
     def __init__(self, ndf=64, nc=3):
         super(Discriminator, self).__init__()
 
         layers_filters = {4:16, 8:16, 16:8, 32:4, 64:2, 128:1, 256:0.5, 512:0.25, 1024:0.125}
-        
         nfc = {}
         for k, v in layers_filters.items():
             nfc[k] = int(v*ndf)
         
-        self.initial = nn.Sequential(spectral_norm(nn.Conv2d(nc, nfc[1024], 4, 2, 1, bias=False)), 
-                                    nn.BatchNorm2d(nfc[1024]), # 8 x 256 x 256
-                                    nn.LeakyReLU(0.2, inplace=True),
-                                    
-        )
+        self.initial = nn.Sequential(
+            spectral_norm(nn.Conv2d(nc, nfc[1024], 4, 2, 1, bias=False)), 
+            nn.BatchNorm2d(nfc[1024]), # 8 x 256 x 256
+            nn.LeakyReLU(0.2, inplace=True))
+
         self.down1 = Reduction(nfc[1024], nfc[512]) # 16 x 128 x 128
         self.down2 = Reduction(nfc[512], nfc[256]) # 32 x 64 x 64
         self.down3 = Reduction(nfc[256], nfc[128]) # 64 x 32 x 32
         self.down4 = Reduction(nfc[128], nfc[64]) # 128 x 16 x 16
         self.down5 = Reduction(nfc[64], nfc[32]) # 256 x 8 x 8
 
-        self.final = nn.Sequential(spectral_norm(nn.Conv2d(nfc[32], nfc[16], 1, 1, 0, bias=False)),
-                                    nn.BatchNorm2d(nfc[16]),
-                                    nn.LeakyReLU(0.2, inplace=True),
-                                    spectral_norm(nn.Conv2d(nfc[16], 1, 4, 1, 0, bias=False)), # 1 x 5 x 5
-
-        )
+        self.final = nn.Sequential(
+            spectral_norm(nn.Conv2d(nfc[32], nfc[16], 1, 1, 0, bias=False)),
+            nn.BatchNorm2d(nfc[16]),
+            nn.LeakyReLU(0.2, inplace=True),
+            spectral_norm(nn.Conv2d(nfc[16], 1, 4, 1, 0, bias=False))) # 1 x 5 x 5
 
         self.Simple_8 = Simple_Decoder_8()
         self.Simple_16 = Simple_Decoder_16()
@@ -227,24 +219,8 @@ class Discriminator(nn.Module):
 
         if tag == "Real":
             x_recon_random = self.Simple_16(feat_16) # 3 x 128 x 128 Random crop
-           
             x_recon = self.Simple_8(feat_8) # 3 x 128 x 128 Reconstruction
             
             return  out, [x_recon_random, x_recon]
 
         return out
-
-# Testing the networks
-if __name__ == '__main__':
-    # Testing the generator
-    generator = Generator()
-    z = torch.randn(1, 256, 1, 1)
-    out = generator(z)
-    print(out.shape)
-
-    # Testing the discriminator
-    discriminator = Discriminator()
-    x = torch.randn(4, 3, 512, 512)
-    out = discriminator(x, "Fake")
-    print(out.shape)
-    print(rearrange(torch.randn(16, 1, 5, 5), 'b c h w -> b (c h w)').shape)

@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data
-import torchvision
 import torchvision.datasets as dset
 import torchvision.transforms as transforms
 import torchvision.utils as vutils

@@ -84,7 +84,12 @@ As amostras obtidas por meio da rede generativa relembram a estrutura da classe 
 A síntese de imagens com um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, contudo existe na literatura métodos que se propõem a isso, e adaptando um desses métodos a FastGAN as nossas necessidades fomos capazes de amostrar dados condizentes em aspectos visuais com o nosso conjunto de dados. No entanto ainda há etapas que devemos nos aprofundar e dar prosseguimento como o treinamento de redes neurais para classificação e a utilização de métodos de interpretação dessas redes para averiguarmos se as amostras sintéticas obtidas trazem as propriedades do conjunto de dados original.
 
 ## Código
-Para a entrega E2 encontra-se disponível o código utilizando para o [treinamento da GAN](https://github.com/pfracarolli/ia376l/tree/master/src/models), e também um notebook no [Google Colab](https://colab.research.google.com/drive/1PK846mKRrCfe_PLiODZ0799I3LNk2408?usp=sharing) demonstrado como o reproduzir.
+Nesta seção estaremos disponibilizando alguns Colab notebooks para fins de reprodutibilidade do projeto.
+* [Treinamento da GAN](https://colab.research.google.com/drive/1PK846mKRrCfe_PLiODZ0799I3LNk2408?usp=sharing)
+* [Amostragem da GAN](https://colab.research.google.com/drive/1yy9FwKgEaygtL7mUiQommNEUae0fA5cd?usp=sharing)
+* [Como criar o conjunto de dados](https://colab.research.google.com/drive/13SIOthGgAOAEhw1KQfMVNsh2w315_Efi?usp=sharing)*
+
+*Temporários
 
 
 ## Cronograma
