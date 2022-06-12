@@ -10,11 +10,10 @@ import torchvision.utils as vutils
 from torchvision import transforms
 import torch.nn.functional as F
 #
-from utilidades import *
-from modelos import Discriminator, Generator
+from .utils import *
+from .gan import Discriminator, Generator
 import lpips
-import DiffAugment_pytorch
-from DiffAugment_pytorch import DiffAugment
+from .diff_augment import DiffAugment
 policy = 'color,translation'
 
 def train(args):
