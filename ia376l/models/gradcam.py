@@ -1,3 +1,5 @@
+import torch
+
 from typing import Callable, Optional
 
 from torch import nn
