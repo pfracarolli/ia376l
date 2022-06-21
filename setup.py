@@ -7,5 +7,5 @@ setup(
     description="Final project for Unicamp's IA376-L Deep Learning for Signal Synthesis course.",
     author="pfracarolli",
     license="",
-    install_requires=["pytorch_lightning"],
+    install_requires=["pytorch_lightning", "einops"],
 )
