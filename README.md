@@ -85,6 +85,44 @@ Adaptando a arquitetura da [FastGAN](https://arxiv.org/abs/2101.04775) para as n
 
 As amostras obtidas por meio da rede generativa lembram a estrutura da classe à qual cada uma pertence, porém elas são facilmente distinguíveis como sendo falsas devido a fatores como formas distorcidas, borrões, padrão de cores e etc. Neste trabalho, contudo, não tivemos como objetivo a geração amostras fidedignas em aspectos visuais, mas sim amostras que tragam as propriedades estatísticas de cada classe para que elas sejam úteis para o aumento de um conjunto de dados.
 
+|![MobileNetV3](./img/mobilenetv3_acc.png)|
+|:--:|
+|*Figura 4: Performance de treinamento de uma MobileNetV3. O gráfico mostra a evolução da acurácia do modelo em um mesmo conjunto de testes à medida que aumentamos a quantidade de dados no treinamento, sendo estes amostrados a partir da FastGAN treinada.*|
+
+### GradCAM
+
+|![GC_baseline_correct](./img/gradcam_baseline_correct.png)|
+|:--:|
+|*Figura 5: GradCAM do modelo baseline (MobileNet) em amostras reais classificadas corretamente. **T** representa o rótulo real e **P** é o rótulo predito*|
+
+|![GC_baseline_correct](./img/gradcam_baseline_incorrect.png)|
+|:--:|
+|*Figura 6: GradCAM do modelo baseline (MobileNet) em amostras reais classificadas incorretamente*|
+
+|![GC_baseline_correct](./img/gradcam_baseline_correct_gen.png)|
+|:--:|
+|*Figura 7: GradCAM do modelo baseline (MobileNet) em amostras geradas classificadas corretamente.*|
+
+|![GC_baseline_correct](./img/gradcam_baseline_incorrect_gen.png)|
+|:--:|
+|*Figura 8: GradCAM do modelo baseline (MobileNet) em amostras geradas classificadas incorretamente*|
+
+|![GC_baseline_correct](./img/gradcam_aug125_correct.png)|
+|:--:|
+|*Figura 9: GradCAM do melhor modelo aumentado (125%) em amostras reais classificadas corretamente*|
+
+|![GC_baseline_correct](./img/gradcam_aug125_incorrect.png)|
+|:--:|
+|*Figura 10: GradCAM do melhor modelo aumentado (125%) em amostras reais classificadas incorretamente*|
+
+|![GC_baseline_correct](./img/gradcam_aug125_correct_gen.png)|
+|:--:|
+|*Figura 11: GradCAM do melhor modelo aumentado (125%) em amostras geradas classificadas corretamente.*|
+
+|![GC_baseline_correct](./img/gradcam_aug125_incorrect_gen.png)|
+|:--:|
+|*Figura 12: GradCAM do melhor modelo aumentado (125%) em amostras geradas classificadas incorretamente*|
+
 ## Conclusão (REFAZER)
 A síntese de imagens com um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, contudo existe na literatura métodos que se propõem a isso, e adaptando um desses métodos a FastGAN as nossas necessidades fomos capazes de amostrar dados condizentes em aspectos visuais com o nosso conjunto de dados. No entanto ainda há etapas que devemos nos aprofundar e dar prosseguimento como o treinamento de redes neurais para classificação e a utilização de métodos de interpretação dessas redes para averiguarmos se as amostras sintéticas obtidas trazem as propriedades do conjunto de dados original.
 
