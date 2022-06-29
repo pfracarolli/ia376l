@@ -244,34 +244,34 @@ Esses resultados e os da Figura 15 abaixo foram discutidos na seção Resultados
 ### **C** &nbsp; &nbsp; &nbsp; &nbsp; Detalhamento dos resultados do Grad-CAM
 Na seção Resultados e Discussão abordamos o método Grad-CAM mas deixamos aqui algumas imagens para uma visualização e interpretação mais detalhada dos resultados.
 
-|![GC_baseline_correct](./img/Grad-CAM_baseline_correct.png)|
+|![GC_baseline_correct](./img/gradcam_baseline_correct.png)|
 |:--:|
 | Figura 16 - Grad-CAM do modelo baseline (MobileNet) em amostras reais classificadas corretamente. **T** representa o rótulo real e **P** é o rótulo predito. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_baseline_incorrect.png)|
+|![GC_baseline_correct](./img/gradcam_baseline_incorrect.png)|
 |:--:|
 | Figura 17 - Grad-CAM do modelo baseline (MobileNet) em amostras reais classificadas incorretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_baseline_correct_gen.png)|
+|![GC_baseline_correct](./img/gradcam_baseline_correct_gen.png)|
 |:--:|
 | Figura 18 - Grad-CAM do modelo baseline (MobileNet) em amostras geradas classificadas corretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_baseline_incorrect_gen.png)|
+|![GC_baseline_correct](./img/gradcam_baseline_incorrect_gen.png)|
 |:--:|
 | Figura 19 - Grad-CAM do modelo baseline (MobileNet) em amostras geradas classificadas incorretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_aug125_correct.png)|
+|![GC_baseline_correct](./img/gradcam_aug125_correct.png)|
 |:--:|
 | Figura 20 - Grad-CAM do melhor modelo aumentado (125%) em amostras reais classificadas corretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_aug125_incorrect.png)|
+|![GC_baseline_correct](./img/gradcam_aug125_incorrect.png)|
 |:--:|
 | Figura 21 - Grad-CAM do melhor modelo aumentado (125%) em amostras reais classificadas incorretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_aug125_correct_gen.png)|
+|![GC_baseline_correct](./img/gradcam_aug125_correct_gen.png)|
 |:--:|
 | Figura 22 - Grad-CAM do melhor modelo aumentado (125%) em amostras geradas classificadas corretamente. <br> Fonte: Imagem própria. |
 
-|![GC_baseline_correct](./img/Grad-CAM_aug125_incorrect_gen.png)|
+|![GC_baseline_correct](./img/gradcam_aug125_incorrect_gen.png)|
 |:--:|
 | Figura 23 - Grad-CAM do melhor modelo aumentado (125%) em amostras geradas classificadas incorretamente <br> Fonte: Imagem própria. |
