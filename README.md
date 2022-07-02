@@ -66,7 +66,7 @@ O presente trabalho foi realizado em três etapas, sendo elas:
 
 **2) Classificação**: Treinamos uma série de CNNs a partir das imagens e de seus rótulos. Mais explicitamente, avaliamos os efeitos de 1. treinar um classificador somente nos dados originais; 2. treinar com os dados originais e técnicas tradicionais de aumento de dados; e 3. treinar com os dados originais e com os dados sintéticos.
 
-**3) Visualização do aprendizado das CNNs**: Uma vez treinada as CNNs aplicamos a Grad-CAM, uma técnica que nos possibilita visualizar as regiões da imagem mais relevantes para a decisão do classificador.
+**3) Visualização do aprendizado das CNNs**: Uma vez treinada as CNNs aplicamos a [Grad-CAM](https://arxiv.org/abs/1610.02391), uma técnica que nos possibilita visualizar as regiões da imagem mais relevantes para a decisão do classificador.
 
 ### **Avaliação**
 
@@ -77,6 +77,7 @@ Dada a abordagem acima, avaliamos os resultados do nosso experimento por meio de
 Para este trabalho, utilizamos o [PyTorch](https://pytorch.org/) como framework principal e desenvolvemos o código no ambiente [Google Colab](https://colab.research.google.com/).
 
 ## Resultados e Discussão
+Abaixo dividimos a seção em três partes para abordar melhor a cronologia de desenvolvimento de cada etapa do projeto.
 
 ### **1) GANs**
 Adaptando a arquitetura da FastGAN para as nossas necessidades conseguimos treinar cada classe do nosso conjunto de dados individualmente. Algumas amostras podem ser visualizadas abaixo:
@@ -85,10 +86,16 @@ Adaptando a arquitetura da FastGAN para as nossas necessidades conseguimos trein
 |:--:|
 | Figura 3 - Amostra geradas. <br> Fonte: Imagem própria. |
 
-As amostras obtidas por meio da rede generativa lembram a estrutura da classe à qual cada uma pertence, porém elas são facilmente distinguíveis como sendo imagens falsas devido a fatores como formas distorcidas, padrão de cores e etc. Contudo, neste trabalho não tivemos o objetivo de gerar amostras fidedignas em aspectos visuais, mas sim amostras que tragam as propriedades estatísticas das nossas classes para que elas sejam úteis no aumento do nosso conjunto de dados.
+O interessante é que como o gerador da GAN é uma função contínua pequenas mudanças na entrada geram pequenas mudanças na saída e isso pode ser aproveitado como uma forma de gerar distúrbios e variações de imagens, além de mostrar a capacidade de amostragam que o modelo proporciona.
+
+|![Interpolação linear do Nut](./img/nut.gif) ![Interpolação linear do Clamp](./img/clamp.gif)|
+|:--:|
+| Figura 5 - Interpolação linear do Nut e Clamp no espaço latente do gerador. <br> Fonte: Imagem própria. |
+
+Por fim as amostras obtidas da rede generativa lembram a estrutura da classe à qual cada uma pertence, porém elas são facilmente distinguíveis como sendo imagens falsas devido a fatores como formas distorcidas, padrão de cores e etc. Contudo, neste trabalho não tivemos o objetivo de gerar amostras fidedignas em aspectos visuais, mas sim amostras que tragam as propriedades estatísticas das nossas classes para que elas sejam úteis no aumento do nosso conjunto de dados.
 
 ### **2) Classificação**
-Para avaliarmos o desempenho das amostras sintéticas em outros modelos treinamos duas CNNs: VGG16 e MobileNetV3. As duas redes foram treinadas com os dados originais e com o acréscimo de dados sintéticos em várias proporções, conforme mostra a imagem abaixo.
+Para avaliarmos o desempenho das amostras sintéticas em outros modelos treinamos duas CNNs: [VGG16](https://arxiv.org/abs/1409.1556) e [MobileNetV3](https://arxiv.org/abs/1905.02244). As duas redes foram treinadas com os dados originais e com o acréscimo de dados sintéticos em várias proporções, conforme mostra a imagem abaixo.
 |![MobileNetV3](./img/losses_mobilenet.png)|
 |:--:|
 | Figura 4 - Performance de treinamento da MobileNetV3. <br> Fonte: Imagem própria. |
@@ -105,8 +112,18 @@ Na primeira linha da Figura 5 podemos ver alguns resultados do método Grad-CAM 
 
 Esse resultado nos traz algumas reflexões sobre o uso de dados sintéticos no treinamento de um modelo, pois o modelo treinado com dados sintético é mais acurado que o treinado apenas com dados reais, e isso pode indicar que os dados sintéticos refinam o modelo classificativo pois trazem as características únicas de cada classe e fazem com que o classificador torne-se mais preciso em detalhes únicos de cada classe.
 
-## Conclusão(REFAZER)
-A síntese de imagens com um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, contudo existe na literatura métodos que se propõem a isso, e adaptando um desses métodos a FastGAN as nossas necessidades fomos capazes de amostrar dados condizentes em aspectos visuais com o nosso conjunto de dados. No entanto ainda há etapas que devemos nos aprofundar e dar prosseguimento como o treinamento de redes neurais para classificação e a utilização de métodos de interpretação dessas redes para averiguarmos se as amostras sintéticas obtidas trazem as propriedades do conjunto de dados original.
+## Conclusão(EM ANDAMENTO)
+A síntese de imagens utilizando um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, ainda mais quando o objetivo é obter dessas amostras sintetizadas propriedades que nos permita adiciona-lás de volta ao nosso conjunto de dados para aumenta-lo de maneira benigna. Para alcançarmos isso dividimos o trabalho em três partes: síntese, aplicação e entendimento.  
+
+Na parte de síntese adaptamos as nossas necessidades uma arquitetura conhecida como FastGAN, a qual foi capaz de produzir imagens com conteúdos visuais coerentes para cada classe e uma ampla gama de possibilidades de amostragem que inclui imagens com variações de forma, pose e local.  
+
+Na segunda parte buscamos uma aplicação ao nosso conjunto de dados aumentado para tentarmos quantificar os efeitos dos dados sintéticos, assim aproveitamos que os dados são rotulados e treinamos diversas CNNs em que conseguimos constatar que a adição de amostra sintéticas teve um efeito positivo.  
+
+A última etapa foi para entendermos os efeitos que os dados sintéticos geraram sobre os nossos classificadores, para isso usamos a Grad-CAM e visualizamos as regiões mais importantes da tomada de decisão das CNNs e notamos que os dados sintéticos fazem o classificador ter uma área mais restrita para a sua tomada de decisão, focando em pequenos detalhes apenas.  
+
+Juntando as informações de cada etapa temos que as amostras geradas pela GAN aprimorou o desempenho das redes classificativas e alterou também o seu padrão de tomada de decisão, isso indica que as amostras sintetizadas trouxeram as propriedades das amostras reais e podem ser benéficas para o aumento de um conjunto de dados que será utilizado em outras aplicações.  
+
+Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que mais nos chamou a atenção, pois isso poderia indicar que as amostras sintetizadas não possuem em sí uma grande estrutura que remete as amostras reais e sim pequenas estruturas únicas de cada classe, como também poderia indicar que o acréscimo de variabilidade obtido das amostras sintéticas faria o classificador se tornar mais apto a distinguir os detalhes únicos que cada classe apresenta. Isso é algo que possa vir a ser estudado mais afundo e que exigiria uma outra metodologia para associar os efeitos de um modelo generativo profundo ao aprendizado de um modelo que use esses dados.
 
 
 ## Cronograma
@@ -135,6 +152,8 @@ A síntese de imagens com um conjunto de dados pequeno e poder computacional lim
 * [GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium](https://arxiv.org/abs/1706.08500)
 * [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167)
 * [Language Modeling with Gated Convolutional Networks](https://arxiv.org/abs/1612.08083)
+* [Searching for MobileNetV3](https://arxiv.org/abs/1905.02244)
+* [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)
 * [Grad-CAM](https://arxiv.org/abs/1610.02391)
 
 ## Apêndice
