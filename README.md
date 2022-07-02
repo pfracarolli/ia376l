@@ -113,9 +113,9 @@ Na primeira linha da Figura 5 podemos ver alguns resultados do método Grad-CAM 
 Esse resultado nos traz algumas reflexões sobre o uso de dados sintéticos no treinamento de um modelo, pois o modelo treinado com dados sintético é mais acurado que o treinado apenas com dados reais, e isso pode indicar que os dados sintéticos refinam o modelo classificativo pois trazem as características únicas de cada classe e fazem com que o classificador torne-se mais preciso em detalhes únicos de cada classe.
 
 ## Conclusão(EM ANDAMENTO)
-A síntese de imagens utilizando um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, ainda mais quando o objetivo é obter dessas amostras sintetizadas propriedades que nos permita adiciona-lás de volta ao nosso conjunto de dados para aumenta-lo de maneira benigna. Para alcançarmos isso dividimos o trabalho em três partes: síntese, aplicação e entendimento.  
+A síntese de imagens utilizando um conjunto de dados pequeno e poder computacional limitado é uma tarefa difícil, ainda mais quando o objetivo é obter dessas amostras sintetizadas propriedades que nos permita adiciona-las de volta ao nosso conjunto de dados para aumenta-lo de maneira benigna. Para alcançarmos isso dividimos o trabalho em três partes: síntese, aplicação e entendimento.  
 
-Na parte de síntese adaptamos as nossas necessidades uma arquitetura conhecida como FastGAN, a qual foi capaz de produzir imagens com conteúdos visuais coerentes para cada classe e uma ampla gama de possibilidades de amostragem que inclui imagens com variações de forma, pose e local.  
+Na parte de síntese adaptamos as nossas necessidades uma arquitetura conhecida como FastGAN, a qual foi capaz de produzir imagens com conteúdo visual coerente para cada classe e uma ampla gama de possibilidades de amostragem que inclui imagens com variações de forma, pose e local.  
 
 Na segunda parte buscamos uma aplicação ao nosso conjunto de dados aumentado para tentarmos quantificar os efeitos dos dados sintéticos, assim aproveitamos que os dados são rotulados e treinamos diversas CNNs em que conseguimos constatar que a adição de amostra sintéticas teve um efeito positivo.  
 
@@ -123,7 +123,7 @@ A última etapa foi para entendermos os efeitos que os dados sintéticos geraram
 
 Juntando as informações de cada etapa temos que as amostras geradas pela GAN aprimorou o desempenho das redes classificativas e alterou também o seu padrão de tomada de decisão, isso indica que as amostras sintetizadas trouxeram as propriedades das amostras reais e podem ser benéficas para o aumento de um conjunto de dados que será utilizado em outras aplicações.  
 
-Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que mais nos chamou a atenção, pois isso poderia indicar que as amostras sintetizadas não possuem em sí uma grande estrutura que remete as amostras reais e sim pequenas estruturas únicas de cada classe, como também poderia indicar que o acréscimo de variabilidade obtido das amostras sintéticas faria o classificador se tornar mais apto a distinguir os detalhes únicos que cada classe apresenta. Isso é algo que possa vir a ser estudado mais afundo e que exigiria uma outra metodologia para associar os efeitos de um modelo generativo profundo ao aprendizado de um modelo que use esses dados.
+Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que mais nos chamou a atenção, pois isso poderia indicar que as amostras sintetizadas não possuem em si uma grande estrutura que remete as amostras reais e sim pequenas estruturas únicas de cada classe, como também poderia indicar que o acréscimo de variabilidade obtido das amostras sintéticas faria o classificador se tornar mais apto a distinguir os detalhes únicos que cada classe apresenta. Isso é algo que possa vir a ser estudado mais afundo e que exigiria uma outra metodologia para associar os efeitos de um modelo generativo profundo ao aprendizado de um modelo que use esses dados.
 
 
 ## Cronograma
