@@ -86,11 +86,15 @@ Adaptando a arquitetura da FastGAN para as nossas necessidades conseguimos trein
 |:--:|
 | Figura 3 - Amostra geradas. <br> Fonte: Imagem própria. |
 
-O interessante é que como o gerador da GAN é uma função contínua pequenas mudanças na entrada geram pequenas mudanças na saída e isso pode ser aproveitado como uma forma de gerar distúrbios e variações de imagens, além de mostrar a capacidade de amostragam que o modelo proporciona.
+O interessante é que como o gerador da GAN é uma função contínua pequenas mudanças na entrada geram pequenas mudanças na saída e isso pode ser aproveitado como uma forma de gerar distúrbios e variações de imagens, além de mostrar a capacidade de amostragem que o modelo proporciona.
 
-|![Interpolação linear do Nut](./img/nut.gif) ![Interpolação linear do Clamp](./img/clamp.gif)|
+| ![Interpolação linear do Nut](./img/nut.gif) |
 |:--:|
-| Figura 5 - Interpolação linear do Nut e Clamp no espaço latente do gerador. <br> Fonte: Imagem própria. |
+| GIF 1 - Interpolação linear do Nut no espaço latente do gerador. <br> Fonte: GIF próprio. |
+
+![Interpolação linear do Clamp](./img/clamp.gif)
+|:--:|
+| GIF 2 - Interpolação linear do Clamp no espaço latente do gerador. <br> Fonte: GIF próprio. |
 
 Por fim as amostras obtidas da rede generativa lembram a estrutura da classe à qual cada uma pertence, porém elas são facilmente distinguíveis como sendo imagens falsas devido a fatores como formas distorcidas, padrão de cores e etc. Contudo, neste trabalho não tivemos o objetivo de gerar amostras fidedignas em aspectos visuais, mas sim amostras que tragam as propriedades estatísticas das nossas classes para que elas sejam úteis no aumento do nosso conjunto de dados.
 
