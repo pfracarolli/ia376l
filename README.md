@@ -127,13 +127,13 @@ Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que ma
 
 
 ## Cronograma
-|                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|23/06|30/06
-|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----
-|Revisão Bibliográfica          |X    |    X|    X|    0|    0|     |     |     |     |
-|Implementação GAN              |     |     |    X|    #|    #|    #|    #|     |     | 
-|Implementação Classificador    |     |     |     |    X|    #|    #|    #|    #|     |
-|Implementação da Grad-CAM          |     |     |     |    X|    #|    #|    #|    #|     |
-|Relatório Final & Apresentação |     |     |     |     |     |     |     |     |    #|#
+|                         |27/04|04/05|11/05|18/05|25/05|02/06|09/06|16/06|23/06|30/06|04/06
+|-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|Revisão Bibliográfica          |X    |    X|    X|    0|    0|     |     |     |     |     |     |
+|Implementação GAN              |     |     |    X|    X|    X|    X|    X|     |     |     |     |
+|Implementação Classificador    |     |     |     |    X|    X|    X|    X|    X|     |     |     |
+|Implementação da Grad-CAM      |     |     |     |    X|    X|    X|    X|    X|     |     |     |
+|Relatório Final & Apresentação |     |     |     |     |     |     |     |     |    X|    X|    X|
 
 - `#` Tempo Planejado
 - `X` Tempo Consumido
