@@ -15,7 +15,7 @@ oferecida no primeiro semestre de 2022, na Unicamp, sob supervisão da Profa. Dr
 
 
 ## Resumo (Abstract)
-Neste projeto exploramos o aumento de um conjunto de dados através de amostras sintéticas - visando melhorar o desempenho de algoritmos que utilizem esse conjunto de dados aumentado. Contudo na realização deste projeto lidamos com dois grandes desafios: a baixa quantidade dados disponível para o treinamento de um modelo generativo e consequentemente como avalia-lo. Solucionamos esses desafios com a utilização de uma arquitetura GAN especializada em tarefas de *few-shot learning* e com métricas de classificação de uma rede neural convolucional juntamente com a visualização de gradientes por meio da técnica Grad-CAM, que nos auxilio a entender o aprendizado da rede convolucional.
+Neste projeto exploramos o aumento de um conjunto de dados através de amostras sintéticas - visando melhorar o desempenho de algoritmos que utilizem esse conjunto de dados aumentado. Contudo na realização deste projeto lidamos com dois grandes desafios: a baixa quantidade de dados disponíveis para o treinamento de um modelo generativo e consequentemente como avalia-lo. Solucionamos esses desafios com a utilização de uma arquitetura GAN especializada em tarefas de *few-shot learning* e com métricas de classificação de uma rede neural convolucional juntamente com a visualização de gradientes por meio da técnica Grad-CAM, que nos auxilio a entender o aprendizado da rede convolucional.
 ## Descrição do Problema/Motivação
 Modelos generativos profundos atualmente fazem grande sucesso devido aos seus resultados em áreas como geração de texto, áudio e imagens. Porém, analisando o desenvolvimento desses modelos conseguimos perceber a necessidade de treiná-los com uma enorme quantidade de dados e mesmo assim eles podem não sintetizar amostras representativas da distribuição alvo.
 
@@ -107,7 +107,7 @@ Para avaliarmos o desempenho das amostras sintéticas em outros modelos treinamo
 Em ambas as redes foi notado um mesmo padrão de comportamento em que a adição de poucos dados sintéticos deteriorou o treinamento (por volta de 20%) enquanto mais dados ajudaram a rede. Porém, parece haver um limiar onde mais dados não aprimoram tanto o desempenho das redes, pois com o acréscimo 75% de dados sintéticos a acurácia da rede era de 84% e a versão com 125% de dados sintéticos teve um aumento de apenas 2% na acurácia.
 
 ### **3) Grad-CAM**
-Para observarmos os efeitos que os dados sintéticos geram no nosso conjunto de dados utilizamos a Grad-CAM, a qual é uma técnica baseada no gradiente da ultima camada convolucional de uma CNN e nos fornece um mapa de calor que permite visualizarmos as regiões da imagem mais relevantes para o classificador.  Com a imagem abaixo podemos ver alguns exemplos da aplicação desse método.
+Para observarmos os efeitos que os dados sintéticos geram no nosso conjunto de dados utilizamos a Grad-CAM, a qual é uma técnica baseada no gradiente da última camada convolucional de uma CNN e nos fornece um mapa de calor que permite visualizarmos as regiões da imagem mais relevantes para o classificador.  Com a imagem abaixo podemos ver alguns exemplos da aplicação desse método.
 |![Grad-CAM](./img/grad_cam_demo.png)|
 |:--:|
 | Figura 5 - Método Grad-CAM aplicado ao nosso modelo padrão e aumentado (MobileNetV3 2625 amostras sintéticas). <br> Fonte: Imagem própria. |
@@ -123,7 +123,7 @@ Na parte de síntese adaptamos a arquitetura FastGAN e com ela fomos capazes de 
 
 Juntando as informações de cada etapa temos que as amostras geradas pela GAN aprimorou o desempenho das redes classificativas e alterou também o seu padrão de tomada de decisão, isso indica que as amostras sintetizadas trouxeram as propriedades das amostras reais e podem ser benéficas para o aumento de um conjunto de dados que será utilizado em outras aplicações.  
 
-Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que mais nos chamou a atenção, pois isso poderia indicar que as amostras sintetizadas não possuem em si uma grande estrutura que remete as amostras reais e sim pequenas estruturas únicas de cada classe, como também poderia indicar que o acréscimo de variabilidade obtido das amostras sintéticas faria o classificador se tornar mais apto a distinguir os detalhes únicos que as classes apresentam. Isso é algo que possa vir a ser estudado mais afundo e que exigiria uma outra metodologia para associar os efeitos de um modelo generativo profundo ao aprendizado de um modelo que use esses dados.
+Todavia o efeito de restringir a área de tomada de decisão da CNN foi o que mais nos chamou a atenção, pois isso poderia indicar que as amostras sintetizadas não possuem em si uma grande estrutura que remete as amostras reais e sim pequenas estruturas únicas de cada classe, como também poderia indicar que o acréscimo de variabilidade obtido das amostras sintéticas faria o classificador se tornar mais apto a distinguir os detalhes únicos que as classes apresentam. Isso é algo que possa vir a ser estudado mais afundo e que exigiria uma outra metodologia para associar os efeitos de um modelo generativo profundo ao aprendizado de um modelo que utilize esses dados.
 
 
 ## Cronograma
