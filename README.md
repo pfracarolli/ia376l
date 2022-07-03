@@ -107,7 +107,7 @@ Para avaliarmos o desempenho das amostras sintéticas em outros modelos treinamo
 Em ambas as redes foi notado um mesmo padrão de comportamento em que a adição de poucos dados sintéticos deteriorou o treinamento (por volta de 20%) enquanto mais dados ajudaram a rede. Porém, parece haver um limiar onde mais dados não aprimoram tanto o desempenho das redes, pois com o acréscimo 75% de dados sintéticos a acurácia da rede era de 84% e a versão com 125% de dados sintéticos teve um aumento de apenas 2% na acurácia.
 
 ### **3) Grad-CAM**
-Para observarmos os efeitos que os dados sintéticos geram no nosso conjunto de dados utilizamos a Grad-CAM, a qual é uma técnica baseada no gradiente da última camada convolucional de uma CNN e nos fornece um mapa de calor que permite visualizarmos as regiões da imagem mais relevantes para o classificador.  Com a imagem abaixo podemos ver alguns exemplos da aplicação desse método.
+Para observarmos os efeitos que os dados sintéticos geram no nosso conjunto de dados utilizamos a Grad-CAM, uma técnica baseada no gradiente da última camada convolucional de uma CNN que nos fornece um mapa de calor que permite visualizarmos as regiões da imagem mais relevantes para o classificador.  Com a imagem abaixo podemos ver alguns exemplos da aplicação desse método.
 |![Grad-CAM](./img/grad_cam_demo.png)|
 |:--:|
 | Figura 5 - Método Grad-CAM aplicado ao nosso modelo padrão e aumentado (MobileNetV3 2625 amostras sintéticas). <br> Fonte: Imagem própria. |
